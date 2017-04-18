@@ -44,17 +44,13 @@ if __name__ == '__main__':
         json_data = open(os.path.join('server_ARK.json'))
         server_config = json.load(json_data)
         json_data.close()
-
+        server1 = server_ARK(
+            server_config['ip'],
+            int(server_config['rcon_port']),
+            server_config['ServerAdminPassword']
+        )
     else:
         print("El fichero server_ARK.json no existe.")
+        exit(1)
 
-    for lin1 in server_config:
-        print(lin1)
-
-    host = '127.0.0.1'
-    port = server_config['server_ARK']['rcon_port']
-    password = server_config['server_ARK']['ServerAdminPassword']
-
-    server1 = server_ARK(host, port, password)
-    #server1 = server_ARK('127.0.0.1',int('32330'),password)
     server1.connect()
