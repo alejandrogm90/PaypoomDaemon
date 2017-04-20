@@ -1,0 +1,25 @@
+{
+    "cuerda": {
+        "precio": "100",
+        "comando": {
+            "cmd1":"cmd1 ",
+            "cmd2":" ++cmd2"
+        }
+    }
+    ,
+    "pistola1": {
+        "precio": "100",
+        "comando": {
+            "cmd1":"",
+            "cmd2":""
+        }
+    }
+    ,
+    "quitina": {
+        "precio": "100",
+        "comando": {
+            "cmd1":"",
+            "cmd2":""
+        }
+    }
+}
