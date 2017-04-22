@@ -1,7 +1,8 @@
 # Welcome to Paypoom #
 
 A simple tool to admin servers via RCON. For all OS that support python.
-##Right now we are under development phase!!!
+
+## Right now we are under development phase!!! ##
 
 ## Prerequisites ##
 In order to run this script the following needs to be installed:
