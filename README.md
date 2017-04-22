@@ -13,8 +13,7 @@ In order to run this script the following needs to be installed:
  - pip: `sudo apt-get install python-pip`
 
 ##Both
-- You may also run into an issue with installing package requirements:
-   `pip install -r requirements.txt`
+- You may also run into an issue with installing package requirements: `pip install -r requirements.txt`
 
 ## Bibliografy
 - The creator of mcrcon.py [Official Website](https://github.com/barneygale/MCRcon)
