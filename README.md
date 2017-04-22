@@ -2,21 +2,22 @@
 
 A simple tool to admin servers via RCON. For all OS that support python.
 
-## Right now we are under development phase!!! ##
+__Right now we are under development phase!!!__
 
 ## Prerequisites ##
 In order to run this script the following needs to be installed:
 
 ### Windows ###
- - python3 or higher: https://www.python.org/downloads/
+ - python3 or higher: __https://www.python.org/downloads/__
 
 ### Linux ###
- - python3 or higher: `sudo apt-get install python python-dev`
- - pip: `sudo apt-get install python-pip`
+ - python3 or higher: __sudo apt-get install python python-dev__
+ - pip: __sudo apt-get install python-pip__
 
 ## Both ##
-You may also run into an issue with installing package requirements: 
-`pip install -r requirements.txt`
+You may also run into an issue with installing package requirements:
+
+__pip install -r requirements.txt__
 
 
 ## Bibliografy ##
