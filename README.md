@@ -13,6 +13,7 @@ In order to run this script the following needs to be installed:
 ###Linux
  - python3 or higher: `sudo apt-get install python python-dev`
  - pip: `sudo apt-get install python-pip`
+
 ##Both
 
 You may also run into an issue with installing package requirements: 
