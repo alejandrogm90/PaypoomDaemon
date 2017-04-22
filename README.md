@@ -6,8 +6,10 @@ A simple tool to admin servers via RCON. For all OS that support python.
 ## Prerequisites
 
 In order to run this script the following needs to be installed:
+
 ###Windows
  - python3 or higher: https://www.python.org/downloads/
+
 ###Linux
  - python3 or higher: `sudo apt-get install python python-dev`
  - pip: `sudo apt-get install python-pip`
