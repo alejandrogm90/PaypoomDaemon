@@ -27,7 +27,7 @@ __pip install -r requirements.txt__
 
 
 ## Community ##
-- Alejandro Gómez @alejandrogm90
+- [x] Alejandro Gómez @alejandrogm90
 
 *This program also uses code from a number of open source projects. Effort has been made to clearly identify authors in the code comments. If you notice and missing or incorrect attribution please let us know.*
 
