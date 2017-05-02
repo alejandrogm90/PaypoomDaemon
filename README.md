@@ -14,7 +14,7 @@ In order to run this script the following needs to be installed:
  - python3 or higher: __sudo apt-get install python python-dev__
  - pip: __sudo apt-get install python-pip__
 
-## Both ##
+### Both ###
 You may also run into an issue with installing package requirements:
 
 __pip install -r requirements.txt__
