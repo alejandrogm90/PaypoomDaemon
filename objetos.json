@@ -1,25 +1,100 @@
 {
-    "cuerda": {
-        "precio": "100",
+    "5pooms": {
+        "precio": "5",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
-            "cmd1":"cmd1 ",
-            "cmd2":" ++cmd2"
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 5 0 0"
         }
     }
     ,
-    "pistola1": {
-        "precio": "100",
+    "10pooms": {
+        "precio": "5",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
-            "cmd1":"",
-            "cmd2":""
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 5 0 0"
         }
     }
     ,
-    "quitina": {
-        "precio": "100",
+    "15pooms": {
+        "precio": "15",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
-            "cmd1":"",
-            "cmd2":""
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 15 0 0"
+        }
+    }
+    ,
+    "25pooms": {
+        "precio": "25",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 25 0 0"
+        }
+    }
+    ,
+    "50pooms": {
+        "precio": "50",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 50 0 0"
+        }
+    }
+    ,
+    "100pooms": {
+        "precio": "100",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 100 0 0"
+        }
+    }
+    ,
+    "250pooms": {
+        "precio": "250",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 250 0 0"
+        }
+    }
+    ,
+    "500pooms": {
+        "precio": "500",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 500 0 0"
+        }
+    }
+    ,
+    "1000pooms": {
+        "precio": "1000",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 1000 0 0"
+        }
+    }
+    ,
+    "2500pooms": {
+        "precio": "2500",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 2500 0 0"
+        }
+    }
+    ,
+    "5000pooms": {
+        "precio": "5000",
+        "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
+        "comando": {
+            "cmd1":"cheat giveitemtoplayer ",
+            "cmd2":" 5000 0 0"
         }
     }
 }

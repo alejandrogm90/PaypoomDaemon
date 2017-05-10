@@ -9,10 +9,11 @@ import time
 
 from class1.mcrcon import MCRcon
 from class1.serverARK import serverArk
-from class1.commando import Commando
+from class1.comandos import Comandos
 from class1.objeto import Objeto
 
 def leerConsola():
+    comandos1 = Comandos("objetos.json")
     print("\n# connecting...")
     try:
         while True:
@@ -45,6 +46,6 @@ if __name__ == '__main__':
 
     cadena = "/comprar quitina"
 
-    cmo1 = Commando("objetos.json")
+    cmo1 = Comandos("objetos.json", server_config)
 
-    
+    cmo1.ejecutarComando('/pooms')

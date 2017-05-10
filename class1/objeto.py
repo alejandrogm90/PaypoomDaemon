@@ -3,10 +3,11 @@ import json
 
 class Objeto:
 
-    def __init__ (self, nombre, precio, comando):
+    def __init__ (self, nombre="", precio="", blueprint="", comandos=list()):
         self.nombre = nombre
+        self.blueprint = blueprint
         self.precio = precio
-        self.comando = comando
+        self.comandos = comandos
 
     def getNombre(self):
         return self.nombre
@@ -14,8 +15,14 @@ class Objeto:
     def getPrecio(self):
         return self.precio
 
-    def getComando(self):
-        return self.comando
+    def getBlueprint(self):
+        return self.blueprint
+
+    def getComandos(self):
+        return self.comandos
 
     def mostrarObjeto(self):
-        print(self.nombre + ' - ' + self.precio + ' - ' + self.comando)
+        res = self.nombre + ' - ' + self.precio + ' - ' + self.blueprint
+        for ln1 in self.comandos:
+            res += ' - ' + ln1
+        return res

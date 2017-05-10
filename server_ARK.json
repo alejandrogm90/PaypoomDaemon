@@ -7,5 +7,7 @@
     "rcon_port" : "32330",
     "SessionName" : "SesionArkServer",
     "ServerPassword" : "54321",
-    "ServerAdminPassword" : "54321"
+    "ServerAdminPassword" : "54321",
+    "token" : "54321",
+    "group" : "1"
 }
