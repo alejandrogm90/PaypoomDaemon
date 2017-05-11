@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-class serverArk:
+class ServerArk:
     def __init__ (self, hn, pt, pw):
         self.host = hn
         self.port = pt

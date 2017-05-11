@@ -7,14 +7,12 @@ import json
 import urllib
 import time
 import platform
-#import signal
 import subprocess
-#import psutil
 
-from class1.mcrcon import MCRcon
-from class1.serverARK import serverArk
-from class1.comandos import Comandos
-from class1.objeto import Objeto
+from paypoomDaemon.MCRcon import MCRcon
+from paypoomDaemon.ServerArk import ServerArk
+from paypoomDaemon.Comandos import Comandos
+from paypoomDaemon.Objeto import Objeto
 
 def leerConsola(server_config, mcrcon1, cmd1):
     print("\n# connecting...")
@@ -42,7 +40,7 @@ if __name__ == '__main__':
             json_data = open(os.path.join('server_ARK.json'))
             server_config = json.load(json_data)
             json_data.close()
-            server1 = serverArk(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'] )
+            server1 = ServerArk(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'] )
         except:
             print("El fichero server_ARK.json no ha podido ser cargado.")
             exit(2)
