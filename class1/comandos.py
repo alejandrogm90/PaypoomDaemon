@@ -14,7 +14,7 @@ class Comandos:
 
     def esComandoCorrecto(self, cadena):
         for cmd1 in self.listaComandos:
-            if cadenacadena.startswith(cmd1):
+            if cadena.startswith(cmd1):
                 return True
         return False
 
@@ -56,10 +56,7 @@ class Comandos:
         puntos = 0
         print(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['group'] + '&format=json')
         respuesta = urllib.request.urlopen(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['group'] + '&format=json')
-        pagina = respuesta.read()
-        encoding = respuesta.info().get_content_charset('utf-8')
-        datos = json.load(pagina.decode(encoding))
-
-        #puntos = datos['coins']
+        datos = json.loads(respuesta.read().decode('utf-8'))
+        puntos = datos['pooms']
         print(str(puntos))
         return puntos
