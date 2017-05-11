@@ -4,7 +4,7 @@
 import sys
 import os
 import json
-import urllib.request
+import urllib
 import time
 import platform
 #import signal

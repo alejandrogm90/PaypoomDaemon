@@ -1,8 +1,6 @@
-requests
 json
-urllib.request
+urllib
 time
 platform
 signal
 subprocess
-psutil
