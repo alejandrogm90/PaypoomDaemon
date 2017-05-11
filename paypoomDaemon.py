@@ -9,10 +9,9 @@ import time
 import platform
 import subprocess
 
-from paypoomDaemon.MCRcon import MCRcon
-from paypoomDaemon.ServerArk import ServerArk
-from paypoomDaemon.Comandos import Comandos
-from paypoomDaemon.Objeto import Objeto
+from clases.Comandos import Comandos
+from clases.MCRcon import MCRcon
+from clases.ServerArk import ServerArk
 
 def leerConsola(server_config, mcrcon1, cmd1):
     print("\n# connecting...")
