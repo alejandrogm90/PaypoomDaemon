@@ -16,12 +16,14 @@ from class1.serverARK import serverArk
 from class1.comandos import Comandos
 from class1.objeto import Objeto
 
-def leerConsola(cmd1):
+def leerConsola(server_config, mcrcon1, cmd1):
     print("\n# connecting...")
     try:
         while True:
             time.sleep(5)
-            response = rcon.command('getchat')
+            mcrcon1.connect(server_config['SessionName'], int(server_config['rcon_port']))
+            response = mcrcon1.command('getchat')
+            mcrcon1.disconnect()
             if response != "Server received, But no response!!":
                 for linea1 in response:
                     cadena1 = linea1.split(':')[1].lstrip(" ")
@@ -33,6 +35,7 @@ def leerConsola(cmd1):
 
 
 if __name__ == '__main__':
+    mcrcon1 = MCRcon()
     # Carga la configuracion
     if os.path.isfile(os.path.join('server_ARK.json')):
         try:
@@ -67,9 +70,10 @@ if __name__ == '__main__':
         print('l')
         pid1 = subprocess.Popen('ls', shell=False)
     """
-    #cmo1.ejecutarComando('/pooms')
 
-    response = rcon.command('getchat')
+    mcrcon1.connect(server_config['SessionName'], int(server_config['rcon_port']))
+    response = mcrcon1.command('getchat')
+    mcrcon1.disconnect()
     #response = {"Falcon90 (Mr-Trauma): /pooms","Falcon90 (Mr-Trauma): hola a todos","Falcon90 (Mr-Trauma): /add 5pooms"}
     if response != "Server received, But no response!!":
         for linea1 in response:
