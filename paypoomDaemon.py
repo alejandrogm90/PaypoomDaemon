@@ -13,24 +13,47 @@ from clases.Comandos import Comandos
 from clases.MCRcon import MCRcon
 from clases.ServerArk import ServerArk
 
+def interactuar(host, port, password):
+    rcon = MCRcon()
+
+    print("# connecting to %s:%i..." % (host, port))
+    rcon.connect(host, port)
+
+    print("# logging in...")
+    rcon.login(password)
+    try:
+        while True:
+            response = rcon.command(input('> '))
+            if response:
+                print("  %s" % response)
+    except KeyboardInterrupt:
+        print("\n# disconnecting...")
+    rcon.disconnect()
+
 def leerConsola(server_config, mcrcon1, cmd1):
     print("\n# connecting...")
     try:
+        mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
+        mcrcon1.login(server_config['ServerAdminPassword'])
         while True:
-            time.sleep(2)
-            mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
+            time.sleep(5)
             response = mcrcon1.command('getchat')
-            mcrcon1.disconnect()
-            if response != "Server received, But no response!!":
-                for linea1 in response:
-                    idPlayer = cadena.split(' ')[0].split('(')[0]
-                    cadena1 = linea1.split(':')[1].lstrip(" ")
-                    if cmo1.esComandoCorrecto(cadena1):
-                        cmo1.ejecutarComando(cadena1)
-                        print("El jugador "+idPlayer+" ha ejecutado un comando")
-
+            if "Server received, But no response!!" not in response:
+                for linea1 in response.split("\n"):
+                    print(linea1)
+                    try:
+                        idPlayer = response.split(' ')[0]
+                        cadena1 = linea1.split(':')[1].lstrip(" ")
+                        cmd1.ejecutarComando(idPlayer,cadena1)
+                        #if cmd1.esComandoCorrecto(cadena1):
+                        #    cmd1.ejecutarComando(idPlayer,cadena1)
+                    except :
+                        pass
+            else:
+                print("\n vacio...")
     except KeyboardInterrupt:
-        print("\n# disconnecting...")
+        mcrcon1.disconnect()
+        print("\n# disconnecting.mi..")
 
 if __name__ == '__main__':
     mcrcon1 = MCRcon()
@@ -40,7 +63,7 @@ if __name__ == '__main__':
             json_data = open(os.path.join('server_ARK.json'))
             server_config = json.load(json_data)
             json_data.close()
-            server1 = ServerArk(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'] )
+            server1 = ServerArk(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'])
         except:
             print("El fichero server_ARK.json no ha podido ser cargado.")
             exit(2)
@@ -58,5 +81,7 @@ if __name__ == '__main__':
     else:
         print("El fichero objetos.json no existe.")
         exit(3)
-
+    #cmd1.mostrarMensageAJugador("Bro", "Hola")
+    #cmd1.mostrarPuntos("Bro")
     leerConsola(server_config, mcrcon1, cmd1)
+    #interactuar(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'])
