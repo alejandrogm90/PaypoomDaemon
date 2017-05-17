@@ -35,6 +35,11 @@ class Comandos:
         for l1 in self.listObjetos:
             print(l1)
 
+    def mostrarMensageAJugador(self, idPlayer, mesage1):
+        mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
+        response = mcrcon1.command(str('ServerChatToPlayer '+ idPlayer +' "' + mensage1 + '"'))
+        mcrcon1.disconnect()
+
     def esComandoCorrecto(self, cadena):
         for cmd1 in self.listaComandos:
             if cadena.startswith(cmd1):
@@ -77,9 +82,8 @@ class Comandos:
 
     def mostrarPuntos(self, idPlayer):
         puntos = 0
-        print(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['group'] + '&format=json')
+        print(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['idServer'] + '&pas=' + self.server_config['idServer']  + '&format=json')
         respuesta = urllib.request.urlopen(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['group'] + '&format=json')
         datos = json.loads(respuesta.read().decode('utf-8'))
         puntos = datos['pooms']
-        print(str(puntos))
-        return puntos
+        self.mostrarMensageAJugador(idPlayer, str(puntos))

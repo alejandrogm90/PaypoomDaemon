@@ -5,9 +5,9 @@
     "gameserver_port" : "7777",
     "query_port" : "27015",
     "rcon_port" : "32330",
-    "SessionName" : "127.0.0.0",
     "ServerPassword" : "54321",
     "ServerAdminPassword" : "54321",
     "token" : "54321",
+    "idServer" : "1",
     "group" : "1"
 }

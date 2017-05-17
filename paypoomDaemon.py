@@ -18,7 +18,7 @@ def leerConsola(server_config, mcrcon1, cmd1):
     try:
         while True:
             time.sleep(5)
-            mcrcon1.connect(server_config['SessionName'], int(server_config['rcon_port']))
+            mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
             response = mcrcon1.command('getchat')
             mcrcon1.disconnect()
             if response != "Server received, But no response!!":
