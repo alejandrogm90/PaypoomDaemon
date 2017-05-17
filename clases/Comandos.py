@@ -1,7 +1,14 @@
 
 import os
+import sys
 import json
-import urllib
+import hashlib
+
+from .MCRcon import MCRcon
+try:
+    import urllib.request as ur
+except:
+    import urllib as ur
 
 class Objeto:
 
@@ -31,21 +38,6 @@ class Objeto:
 
 class Comandos:
 
-    def mostrarObjetos(self):
-        for l1 in self.listObjetos:
-            print(l1)
-
-    def mostrarMensageAJugador(self, idPlayer, mesage1):
-        mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
-        response = mcrcon1.command(str('ServerChatToPlayer '+ idPlayer +' "' + mensage1 + '"'))
-        mcrcon1.disconnect()
-
-    def esComandoCorrecto(self, cadena):
-        for cmd1 in self.listaComandos:
-            if cadena.startswith(cmd1):
-                return True
-        return False
-
     def __init__ (self, datos, server_config):
         self.server_config = server_config
         json_data = open(os.path.join(datos))
@@ -63,24 +55,43 @@ class Comandos:
         self.listaComandos.append('/pooms')
         self.listaComandos.append('/add')
 
+    def mostrarObjetos(self):
+        for l1 in self.listObjetos:
+            print(l1)
+
+    def mostrarMensageAJugador(self, idPlayer, mensage1):
+        rcon = MCRcon()
+        rcon.connect(self.server_config['ip'], int(self.server_config['rcon_port']))
+        rcon.login(self.server_config['ServerAdminPassword'])
+        response = rcon.command('ServerChatToPlayer "'+ idPlayer +'" ' + mensage1 )
+        rcon.disconnect()
+
+    def esComandoCorrecto(self, cadena):
+        for cmd1 in self.listaComandos:
+            if cadena.startswith(cmd1):
+                return True
+        return False
+
     ##=========================================================
     ##                    COMANDOS
     ##=========================================================
 
     def ejecutarComando(self, idPlayer, cadena):
-        for cmd1 in self.listaComandos:
-            if cadena.startswith(cmd1):
-                if cmd1 == self.listaComandos[0]:
-                    self.mostrarPuntos(idPlayer)
-                elif cmd1 == self.listaComandos[1]:
-                    print('add')
-                else:
-                    print('Error')
+        if cadena.split(' ')[0] == self.listaComandos[0]:
+            #self.mostrarMensageAJugador("Bro", "Hola")
+            self.mostrarPuntos(idPlayer)
+        elif cadena.split(' ')[0] == self.listaComandos[1]:
+            print('add')
+        else:
+            print('No es un comando')
 
     def mostrarPuntos(self, idPlayer):
         puntos = 0
-        print(self.webDatos + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['idServer'] + '&pas=' + self.server_config['idServer']  + '&format=json')
-        respuesta = urllib.request.urlopen(self.server_config['web_Datos'] + '?act=pooms&idp=' + str(idPlayer) + '&ser=' + self.server_config['group'] + '&format=json')
+        token = hashlib.md5()
+        token.update((idPlayer+self.server_config['token']).encode('utf-8'))
+        pass1 = token.hexdigest()
+        cadena = self.server_config['web_Datos'] + '?act=pooms&idp=76561198004070725&ser=' + self.server_config['idServer'] + '&pas=' + pass1 + '&format=json'
+        respuesta = ur.urlopen(cadena)
         datos = json.loads(respuesta.read().decode('utf-8'))
         puntos = datos['pooms']
-        self.mostrarMensageAJugador(idPlayer, str(puntos))
+        self.mostrarMensageAJugador(idPlayer, "Tus puntos acumulados son: "+str(puntos))
