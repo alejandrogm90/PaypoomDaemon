@@ -17,19 +17,20 @@ def leerConsola(server_config, mcrcon1, cmd1):
     print("\n# connecting...")
     try:
         while True:
-            time.sleep(5)
+            time.sleep(2)
             mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
             response = mcrcon1.command('getchat')
             mcrcon1.disconnect()
             if response != "Server received, But no response!!":
                 for linea1 in response:
+                    idPlayer = cadena.split(' ')[0].split('(')[0]
                     cadena1 = linea1.split(':')[1].lstrip(" ")
                     if cmo1.esComandoCorrecto(cadena1):
-                        print(cadena1)
+                        cmo1.ejecutarComando(cadena1)
+                        print("El jugador "+idPlayer+" ha ejecutado un comando")
 
     except KeyboardInterrupt:
         print("\n# disconnecting...")
-
 
 if __name__ == '__main__':
     mcrcon1 = MCRcon()
@@ -50,7 +51,7 @@ if __name__ == '__main__':
     # Carga de los Objetos
     if os.path.isfile(os.path.join('objetos.json')):
         try:
-            cmo1 = Comandos("objetos.json", server_config)
+            cmd1 = Comandos("objetos.json", server_config)
         except:
             print("El fichero objetos.json no ha podido ser cargado.")
             exit(4)
@@ -58,22 +59,4 @@ if __name__ == '__main__':
         print("El fichero objetos.json no existe.")
         exit(3)
 
-    cadena = "/add 5pooms"
-    """
-    if platform.system() == "Windows":
-        print('w')
-        pid1 = subprocess.Popen('dir', shell=False)
-    else:
-        print('l')
-        pid1 = subprocess.Popen('ls', shell=False)
-    """
-
-    mcrcon1.connect(server_config['SessionName'], int(server_config['rcon_port']))
-    response = mcrcon1.command('getchat')
-    mcrcon1.disconnect()
-    #response = {"Falcon90 (Mr-Trauma): /pooms","Falcon90 (Mr-Trauma): hola a todos","Falcon90 (Mr-Trauma): /add 5pooms"}
-    if response != "Server received, But no response!!":
-        for linea1 in response:
-            cadena1 = linea1.split(':')[1].lstrip(" ")
-            if cmo1.esComandoCorrecto(cadena1):
-                print(cadena1)
+    leerConsola(server_config, mcrcon1, cmd1)

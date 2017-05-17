@@ -1,11 +1,7 @@
 {
-    "appid" : "376030",
-    "ark_appid" : "346110",
+    "web_Datos" : "http://www.paypoom.com/datos.php",
     "ip" : "127.0.0.1",
-    "gameserver_port" : "7777",
-    "query_port" : "27015",
     "rcon_port" : "32330",
-    "ServerPassword" : "54321",
     "ServerAdminPassword" : "54321",
     "token" : "54321",
     "idServer" : "1",
