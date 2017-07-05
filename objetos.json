@@ -1,5 +1,6 @@
 {
     "5pooms": {
+        "id": "1",
         "precio": "5",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -9,6 +10,7 @@
     }
     ,
     "10pooms": {
+        "id": "2",
         "precio": "5",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -18,6 +20,7 @@
     }
     ,
     "15pooms": {
+        "id": "3",
         "precio": "15",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -27,6 +30,7 @@
     }
     ,
     "25pooms": {
+        "id": "4",
         "precio": "25",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -36,6 +40,7 @@
     }
     ,
     "50pooms": {
+        "id": "5",
         "precio": "50",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -45,6 +50,7 @@
     }
     ,
     "100pooms": {
+        "id": "6",
         "precio": "100",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -54,6 +60,7 @@
     }
     ,
     "250pooms": {
+        "id": "7",
         "precio": "250",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -63,6 +70,7 @@
     }
     ,
     "500pooms": {
+        "id": "8",
         "precio": "500",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -72,6 +80,7 @@
     }
     ,
     "1000pooms": {
+        "id": "9",
         "precio": "1000",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -81,6 +90,7 @@
     }
     ,
     "2500pooms": {
+        "id": "10",
         "precio": "2500",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {
@@ -90,6 +100,7 @@
     }
     ,
     "5000pooms": {
+        "id": "11",
         "precio": "5000",
         "blueprint": "/Game/Mods/PaypoomCurrency/PrimalItemResource_PaypoomCurrency.PrimalItemResource_PaypoomCurrency",
         "comando": {

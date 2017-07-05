@@ -11,41 +11,17 @@ import subprocess
 
 from clases.Comandos import Comandos
 from clases.MCRcon import MCRcon
-from clases.ServerArk import ServerArk
-
-def interactuar(host, port, password):
-    rcon = MCRcon()
-
-    print("# connecting to %s:%i..." % (host, port))
-    rcon.connect(host, port)
-
-    print("# logging in...")
-    rcon.login(password)
-    try:
-        while True:
-            response = rcon.command(input('> '))
-            if response:
-                print("  %s" % response)
-    except KeyboardInterrupt:
-        print("\n# disconnecting...")
-    rcon.disconnect()
-
-def lanzarParaConsola(host, port, password, cadena):
-    rcon = MCRcon()
-    rcon.connect(host, port)
-    rcon.login(password)
-    response = rcon.command(cadena)
-    if response:
-        print("  %s" % response)
-    else:
-        print("Consulta erronea")
-    rcon.disconnect()
 
 def leerConsola(server_config, mcrcon1, cmd1):
+    print("\n# Pulsa Ctrl+c para salir.")
     print("\n# connecting...")
     try:
-        mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
-        mcrcon1.login(server_config['ServerAdminPassword'])
+        try:
+            mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
+            mcrcon1.login(server_config['ServerAdminPassword'])
+        except:
+            print("\nError al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.")
+            exit(1)
         while True:
             time.sleep(5)
             response = mcrcon1.command('getchat')
@@ -55,7 +31,6 @@ def leerConsola(server_config, mcrcon1, cmd1):
                     try:
                         #idPlayer = response.split(' ')[0]
                         cadena1 = linea1.split(':')[1].lstrip(" ")
-                        #cmd1.ejecutarComando(cadena1)
                         if cmd1.esComandoCorrecto(cadena1):
                             cmd1.ejecutarComando(cadena1)
                     except :
@@ -64,7 +39,7 @@ def leerConsola(server_config, mcrcon1, cmd1):
                 print("\n vacio...")
     except KeyboardInterrupt:
         mcrcon1.disconnect()
-        print("\n# disconnecting.mi..")
+        print("\n# disconnecting...")
 
 if __name__ == '__main__':
     mcrcon1 = MCRcon()
@@ -75,13 +50,22 @@ if __name__ == '__main__':
             json_data = open(os.path.join('server.json'))
             server_config = json.load(json_data)
             json_data.close()
-            server1 = ServerArk(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'])
         except:
             print("El fichero server.json no ha podido ser cargado.")
             exit(2)
     else:
         print("El fichero server.json no existe.")
         exit(1)
+    # Carga de los Items_Dinos
+    if os.path.isfile(os.path.join('objetos.json')):
+        try:
+            cmd1 = Comandos("objetos.json", server_config)
+        except:
+            print("El fichero objetos.json no ha podido ser cargado.")
+            exit(4)
+    else:
+        print("El fichero objetos.json no existe.")
+        exit(3)
 
     if len(sys.argv) > 1:
         if len(sys.argv) > 3 or sys.argv[1] != "-d" and sys.argv[1] != "--debug-mode" and sys.argv[1] != "-cl" and sys.argv[1] != "--command-line" :
@@ -90,22 +74,12 @@ if __name__ == '__main__':
             print("-cl \t--command-line \t\tConsulta el tercer parámetro del argumento en una sola línea.")
         else:
             if sys.argv[1] != "-d":
-                interactuar(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'])
+                cmd1.interactuarDirectamente()
             if sys.argv[1] != "-c":
-                lanzarParaConsola(server_config['ip'], int(server_config['rcon_port']), server_config['ServerAdminPassword'], sys.argv[2])
+                response = cmd1.ejecutarUnComando(sys.argv[2])
+                if response:
+                    print("  %s" % response)
+                else:
+                    print("Consulta erronea")
     else:
-        # Carga de los Items_Dinos
-        if os.path.isfile(os.path.join('objetos.json')):
-            try:
-                cmd1 = Comandos("objetos.json", server_config)
-            except:
-                print("El fichero objetos.json no ha podido ser cargado.")
-                exit(4)
-        else:
-            print("El fichero objetos.json no existe.")
-            exit(3)
-
-        try:
-            leerConsola(server_config, mcrcon1, cmd1)
-        except:
-            print("\nError al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.")
+        leerConsola(server_config, mcrcon1, cmd1)
