@@ -1,6 +1,8 @@
-# Welcome to Paypoom #
+# Welcome to Paypoom Daemon #
 
 A simple tool to admin servers via RCON. For all OS that support python.
+In --debug-mode you can connect direcly to RCON console as ADMIN.
+On --command-line you can send a request to RCON just as one script
 
 __Right now we are under development phase!!!__
 
@@ -27,7 +29,7 @@ __pip install -r requirements.txt__
 
 
 ## Community ##
-- [x] Alejandro Gómez @alejandrogm90
+- [x] [Alejandro Gómez](https://github.com/alejandrogm90) @alejandrogm90
 
 *This program also uses code from a number of open source projects. Effort has been made to clearly identify authors in the code comments. If you notice and missing or incorrect attribution please let us know.*
 
