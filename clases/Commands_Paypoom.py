@@ -37,11 +37,14 @@ class Item_Paypoom:
     def getCompleteCommand(self, idJugador):
         cad1 = ""
         numComandos = len(self.comandos)
-        for parte in range(0, numComandos):
-            if parte < (numComandos - 1):
-                cad1 += self.comandos[parte] + ' ' + idJugador + ' '
-            else:
-                cad1 += self.comandos[parte]
+        if numComandos > 1:
+            for parte in range(0, numComandos):
+                if parte < (numComandos - 1):
+                    cad1 += self.comandos[parte] + ' ' + idJugador + ' '
+                else:
+                    cad1 += self.comandos[parte]
+        else:
+            cad1 += self.comandos[0] + ' ' + idJugador
         if self.blueprint != "0":
             cad1 += ' '+self.blueprint
         return cad1

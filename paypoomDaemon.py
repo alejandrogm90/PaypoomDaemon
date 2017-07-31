@@ -43,12 +43,14 @@ if __name__ == '__main__':
         exit(4)
 
     # Carga de los Items_Dinos
+    """
     try:
         cmd1 = Commands_Paypoom(server_config)
     except:
         print("Items can not be loaded.")
         exit(5)
-
+    """
+    cmd1 = Commands_Paypoom(server_config)
 
     if len(sys.argv) > 1:
         if len(sys.argv) > 3 or sys.argv[1] != "-d" and sys.argv[1] != "--debug-mode" and sys.argv[1] != "-cl" and sys.argv[1] != "--command-line" :
