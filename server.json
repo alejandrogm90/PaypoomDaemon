@@ -1,5 +1,7 @@
 {
-    "web_Datos" : "http://www.paypoom.com/datos.php",
+    "default_language_file" : "lang/lang_ES.json",
+    "web_Datos" : "http://paypoom.com/datos.php",
+    "lapse_request_time" : "5",
     "ip" : "192.168.1.10",
     "rcon_port" : "31000",
     "ServerAdminPassword" : "54321",

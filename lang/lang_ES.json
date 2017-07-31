@@ -1,0 +1,22 @@
+{
+    "string_1" : "\n# Pulsa Ctrl+c para salir.",
+    "string_2" : "\n# Conectando...",
+    "string_3" : "\n# Disconectando...",
+    "string_4" : "El ficharo de idiomas ha sido cargado corectamente...",
+    "string_5" : "\n respuesta vacia ...",
+    "string_6" : "\n Error al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.",
+    "string_7" : "ERROR - parametros erroneos.",
+    "string_8" : "-d  \t--debug-mode   \t\tModo para depurar.",
+    "string_9" : "-cl \t--command-line \t\tComo script.",
+    "string_10" : "Consulta erronea.",
+    "string_11" : "Error: el ID del Item no existe, contacta con el ADMIN.",
+    "string_12" : "No tienes puntos.",
+    "string_13" : "El artículo fue vendido",
+    "string_14" : "",
+    "string_15" : "",
+    "string_16" : "",
+    "string_17" : "",
+    "string_18" : "",
+    "string_19" : "",
+    "string_20" : ""
+}

@@ -1,0 +1,22 @@
+{
+    "string_1" : "\n# Pulsa Ctrl+c para salir.",
+    "string_2" : "\n# Conectando...",
+    "string_3" : "\n# Disconectando...",
+    "string_4" : "El ficharo de idiomas ha sido cargado corectamente...",
+    "string_5" : "\n void response...",
+    "string_6" : "\n Error connecting with server, check the file server.conf data is rigth.",
+    "string_7" : "ERROR - wrong parameters.",
+    "string_8" : "-d  \t--debug-mode   \t\tDebug mode.",
+    "string_9" : "-cl \t--command-line \t\tAs script.",
+    "string_10" : "Wrong request.",
+    "string_11" : "ERROR: the Item do not exist, contact with ADMIN.",
+    "string_12" : "Not enoug points",
+    "string_13" : "Item was sold",
+    "string_14" : "",
+    "string_15" : "",
+    "string_16" : "",
+    "string_17" : "",
+    "string_18" : "",
+    "string_19" : "",
+    "string_20" : ""
+}

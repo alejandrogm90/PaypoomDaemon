@@ -9,37 +9,8 @@ import time
 import platform
 import subprocess
 
-from clases.Comandos import Comandos
+from clases.Commands_Paypoom import Commands_Paypoom
 from clases.MCRcon import MCRcon
-
-def leerConsola(server_config, mcrcon1, cmd1):
-    print("\n# Pulsa Ctrl+c para salir.")
-    print("\n# connecting...")
-    try:
-        try:
-            mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
-            mcrcon1.login(server_config['ServerAdminPassword'])
-        except:
-            print("\nError al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.")
-            exit(1)
-        while True:
-            time.sleep(5)
-            response = mcrcon1.command('getchat')
-            if "Server received, But no response!!" not in response:
-                for linea1 in response.split("\n"):
-                    print(linea1)
-                    try:
-                        #idPlayer = response.split(' ')[0]
-                        cadena1 = linea1.split(':')[1].lstrip(" ")
-                        if cmd1.esComandoCorrecto(cadena1):
-                            cmd1.ejecutarComando(cadena1)
-                    except :
-                        pass
-            else:
-                print("\n vacio...")
-    except KeyboardInterrupt:
-        mcrcon1.disconnect()
-        print("\n# disconnecting...")
 
 if __name__ == '__main__':
     mcrcon1 = MCRcon()
@@ -51,35 +22,74 @@ if __name__ == '__main__':
             server_config = json.load(json_data)
             json_data.close()
         except:
-            print("El fichero server.json no ha podido ser cargado.")
+            print("The file 'server.json' can not be loaded.")
             exit(2)
     else:
-        print("El fichero server.json no existe.")
+        print("The file 'server.json' can not be find.")
         exit(1)
-    # Carga de los Items_Dinos
-    if os.path.isfile(os.path.join('objetos.json')):
+
+    # Carga la configuracion
+    if os.path.isfile(os.path.join(server_config['default_language_file'])):
         try:
-            cmd1 = Comandos("objetos.json", server_config)
+            json_data = open(os.path.join(server_config['default_language_file']))
+            server_config['lang'] = json.load(json_data)
+            json_data.close()
+            print(server_config['lang']['string_4'])
         except:
-            print("El fichero objetos.json no ha podido ser cargado.")
-            exit(4)
+            print("The file '"+server_config['default_language_file']+"' can not be loaded.")
+            exit(3)
     else:
-        print("El fichero objetos.json no existe.")
-        exit(3)
+        print("The file '"+server_config['default_language_file']+"' can not be find.")
+        exit(4)
+
+    # Carga de los Items_Dinos
+    try:
+        cmd1 = Commands_Paypoom(server_config)
+    except:
+        print("Items can not be loaded.")
+        exit(5)
+
 
     if len(sys.argv) > 1:
         if len(sys.argv) > 3 or sys.argv[1] != "-d" and sys.argv[1] != "--debug-mode" and sys.argv[1] != "-cl" and sys.argv[1] != "--command-line" :
-            print("ERROR - parametros erroneos.")
-            print("-d  \t--debug-mode   \t\tModo para depurar.")
-            print("-cl \t--command-line \t\tConsulta el tercer parámetro del argumento en una sola línea.")
+            print(server_config['lang']['string_7'])
+            print(server_config['lang']['string_8'])
+            print(server_config['lang']['string_9'])
         else:
             if sys.argv[1] != "-d":
-                cmd1.interactuarDirectamente()
+                cmd1.interactDirectly()
             if sys.argv[1] != "-c":
-                response = cmd1.ejecutarUnComando(sys.argv[2])
+                response = cmd1.executeCommand(sys.argv[2])
                 if response:
                     print("  %s" % response)
                 else:
-                    print("Consulta erronea")
+                    print(server_config['lang']['string_10'])
     else:
-        leerConsola(server_config, mcrcon1, cmd1)
+        print(server_config['lang']['string_1'])
+        print(server_config['lang']['string_2'])
+        lapse_request_time = server_config['lapse_request_time']
+        try:
+            try:
+                mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
+                mcrcon1.login(server_config['ServerAdminPassword'])
+            except:
+                print(server_config['lang']['string_6'])
+                exit(6)
+            while True:
+                time.sleep(lapse_request_time)
+                response = mcrcon1.command('getchat')
+                if "Server received, But no response!!" not in response:
+                    for linea1 in response.split("\n"):
+                        print(linea1)
+                        try:
+                            #idPlayer = response.split(' ')[0]
+                            cadena1 = linea1.split(':')[1].lstrip(" ")
+                            if cmd1.isRigthCommand(cadena1):
+                                cmd1.interpreteACommand(cadena1)
+                        except :
+                            pass
+                else:
+                    print(server_config['lang']['string_5'])
+        except KeyboardInterrupt:
+            mcrcon1.disconnect()
+            print(server_config['lang']['string_3'])
