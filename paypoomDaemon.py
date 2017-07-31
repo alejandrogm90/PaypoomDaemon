@@ -69,7 +69,7 @@ if __name__ == '__main__':
     else:
         print(server_config['lang']['string_1'])
         print(server_config['lang']['string_2'])
-        lapse_request_time = server_config['lapse_request_time']
+        lapse_request_time = int(server_config['lapse_request_time'])
         try:
             try:
                 mcrcon1.connect(server_config['ip'], int(server_config['rcon_port']))
