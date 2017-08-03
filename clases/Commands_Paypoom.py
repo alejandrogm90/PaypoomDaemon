@@ -102,18 +102,18 @@ class Commands_Paypoom:
     def interactDirectly(self):
         rcon = MCRcon()
         try:
-            mcrcon1.connect(self.server_config['ip'], int(self.server_config['rcon_port']))
-            mcrcon1.login(self.server_config['ServerAdminPassword'])
+            rcon.connect(self.server_config['ip'], int(self.server_config['rcon_port']))
+            rcon.login(self.server_config['ServerAdminPassword'])
+            try:
+                while True:
+                    response = rcon.command(input('> '))
+                    if response:
+                        print("  %s" % response)
+            except KeyboardInterrupt:
+                print("\n# disconnecting...")
+            rcon.disconnect()
         except:
             print("\nError al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.")
-        try:
-            while True:
-                response = rcon.command(input('> '))
-                if response:
-                    print("  %s" % response)
-        except KeyboardInterrupt:
-            print("\n# disconnecting...")
-        rcon.disconnect()
 
     def showMenssageToPlayer(self, idPlayer, mensage1):
         self.executeCommand('ServerChatTo "'+ idPlayer +'" ' + mensage1)

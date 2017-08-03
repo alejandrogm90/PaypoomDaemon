@@ -14,7 +14,7 @@ from clases.MCRcon import MCRcon
 
 if __name__ == '__main__':
     mcrcon1 = MCRcon()
-
+    
     # Carga la configuracion
     if os.path.isfile(os.path.join('server.json')):
         try:
@@ -43,14 +43,11 @@ if __name__ == '__main__':
         exit(4)
 
     # Carga de los Items_Dinos
-    """
     try:
         cmd1 = Commands_Paypoom(server_config)
     except:
         print("Items can not be loaded.")
         exit(5)
-    """
-    cmd1 = Commands_Paypoom(server_config)
 
     if len(sys.argv) > 1:
         if len(sys.argv) > 3 or sys.argv[1] != "-d" and sys.argv[1] != "--debug-mode" and sys.argv[1] != "-cl" and sys.argv[1] != "--command-line" :
@@ -58,9 +55,9 @@ if __name__ == '__main__':
             print(server_config['lang']['string_8'])
             print(server_config['lang']['string_9'])
         else:
-            if sys.argv[1] != "-d":
+            if sys.argv[1] == "-d":
                 cmd1.interactDirectly()
-            if sys.argv[1] != "-c":
+            if sys.argv[1] == "-cl":
                 response = cmd1.executeCommand(sys.argv[2])
                 if response:
                     print("  %s" % response)
