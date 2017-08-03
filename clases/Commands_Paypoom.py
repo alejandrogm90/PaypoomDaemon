@@ -75,8 +75,7 @@ class Commands_Paypoom:
             for l2 in datos[str(l1)]['comando']:
                 comados2.append(str(datos[str(l1)]['comando'][l2]))
             obj1 = Item_Paypoom(str(datos[str(l1)]['id']), str(l1), str(datos[str(l1)]['precio']), str(datos[str(l1)]['blueprint']), comados2)
-            print(obj1.getString())
-            print(obj1.getCompleteCommand('235345245'))
+            print(obj1.getCompleteCommand('IDPLAYER'))
             self.lista_Item_Paypoom.append(obj1)
 
     def chargeFromFile(self, datos):
@@ -116,9 +115,11 @@ class Commands_Paypoom:
             print("\nError al conectar con el serbidor, compruebe que los datos del fichero server.conf son correctos.")
 
     def showMenssageToPlayer(self, idPlayer, mensage1):
+        print('ServerChatTo "'+ idPlayer +'" ' + mensage1)
         self.executeCommand('ServerChatTo "'+ idPlayer +'" ' + mensage1)
 
     def executeCommand(self, comando1):
+        print(comando1)
         rcon = MCRcon()
         rcon.connect(self.server_config['ip'], int(self.server_config['rcon_port']))
         rcon.login(self.server_config['ServerAdminPassword'])
@@ -165,7 +166,7 @@ class Commands_Paypoom:
         token.update((cadena+self.server_config['token']).encode('utf-8'))
         pass1 = token.hexdigest()
         cadena = self.server_config['web_Datos'] + '?act=spend&ser=' + self.server_config['idServer'] + '&tok=' + cadena + '&cla=' + pass1 + '&format=json'
-        print(cadena)
+        #print(cadena)
         respuesta = ur.urlopen(cadena)
         datos = json.loads(respuesta.read().decode('utf-8'))
         try:
