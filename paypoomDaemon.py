@@ -8,14 +8,24 @@ import urllib
 import time
 import platform
 import subprocess
-
 from clases.Commands_Paypoom import Commands_Paypoom
 from clases.MCRcon import MCRcon
+"""
+from distutils.core import setup
+setup(name='Distutils',
+    version='0.1',
+    description='Python ARK Utilities',
+    author='Alejandro Gomez',
+    author_email='alejandrogomezmartin90@gmail.com',
+    url='https://github.com/alejandrogm90/PaypoomDaemon',
+)
+"""
 
 if __name__ == '__main__':
+    """ Manage main menu. """
     mcrcon1 = MCRcon()
-    
-    # Carga la configuracion
+
+    """ load configuration """
     if os.path.isfile(os.path.join('server.json')):
         try:
             json_data = open(os.path.join('server.json'))
@@ -28,7 +38,7 @@ if __name__ == '__main__':
         print("The file 'server.json' can not be find.")
         exit(1)
 
-    # Carga la configuracion
+    """ load languges """
     if os.path.isfile(os.path.join(server_config['default_language_file'])):
         try:
             json_data = open(os.path.join(server_config['default_language_file']))
@@ -42,7 +52,7 @@ if __name__ == '__main__':
         print("The file '"+server_config['default_language_file']+"' can not be find.")
         exit(4)
 
-    # Carga de los Items_Dinos
+    """ load items """
     try:
         cmd1 = Commands_Paypoom(server_config)
     except:
@@ -81,14 +91,13 @@ if __name__ == '__main__':
                     for linea1 in response.split("\n"):
                         print(linea1)
                         try:
-                            #idPlayer = response.split(' ')[0]
                             cadena1 = linea1.split(':')[1].lstrip(" ")
                             if cmd1.isRigthCommand(cadena1):
                                 cmd1.interpreteACommand(cadena1)
                         except :
                             pass
-                else:
-                    print(server_config['lang']['string_5'])
+                #else:
+                #    print(server_config['lang']['string_5'])
         except KeyboardInterrupt:
             mcrcon1.disconnect()
             print(server_config['lang']['string_3'])
