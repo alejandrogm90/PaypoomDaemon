@@ -135,7 +135,7 @@ class Commands_Paypoom:
                     posItem = self.getPosItem(i1)
                     if posItem >= 0:
                         self.showMenssageToPlayer(p1, self.server_config['lang']['string_13'])
-                        self.executeCommand(self.lista_Item_Paypoom[posItem].getCompleteCommand(p1))
+                        self.executeCommand(self.lista_Item_Paypoom[posItem].getCompleteCommand(serverPlayerID))
                     else:
                         self.showMenssageToPlayer(p1, self.server_config['lang']['string_11'])
                 else:
