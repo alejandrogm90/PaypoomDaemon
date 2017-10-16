@@ -59,6 +59,8 @@ if __name__ == '__main__':
         print("Items can not be loaded.")
         exit(5)
 
+    cmd1.mostrarComandos2()
+
     if len(sys.argv) > 1:
         if len(sys.argv) > 3 or sys.argv[1] != "-d" and sys.argv[1] != "--debug-mode" and sys.argv[1] != "-cl" and sys.argv[1] != "--command-line" :
             print(server_config['lang']['string_7'])
