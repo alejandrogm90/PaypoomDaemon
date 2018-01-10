@@ -22,7 +22,7 @@ You may also run into an issue with installing package requirements:
 __pip install -r requirements.txt__
 
 
-## Bibliografy ##
+## Bibliography ##
 - The creator of mcrcon.py [Official Website](https://github.com/barneygale/MCRcon)
 - Valve RCON help [Official Project](https://developer.valvesoftware.com/wiki/Source_RCON_Protocol)
 - Other wikis help [Official Website](http://wiki.vg/RCON)
